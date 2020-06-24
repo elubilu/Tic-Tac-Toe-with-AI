@@ -7,7 +7,7 @@ let mainBoard = [
 const human = 'X'
 const ai = 'O'
 ticTacToeGame.start();
-
+// restartButton.addEventListener('click', ticTacToeGame.start())
 function TicTacToeGame() {
   const board = new Board();
   const humanPlayer = new HumanPlayer(board);
@@ -15,6 +15,14 @@ function TicTacToeGame() {
   let turn = 0;
 
   this.start = function() {
+    // for(let i =0; i<3; i++){
+    //   for(let j=0; j<3; j++){
+    //     mainBoard[i][j]=''
+    //     let res = i+''+j
+    //     document.getElementById(res).innerText = '';
+    //   }
+    // }
+    
     const config = { childList: true };
     const observer = new MutationObserver(() => takeTurn());
     board.positions.forEach((el) => observer.observe(el, config));
@@ -100,15 +108,23 @@ function HumanPlayer(board) {
   function handleTurnTaken(event) {
     // console.log(event.target.id)
     let pos =event.target.id
-    let posx =parseInt(pos.slice(0,1))
-    let posy =parseInt(pos.slice(1,2))
-    mainBoard[posx][posy] = 'X';
-    // console.log(posx+' '+posy)
-    event.target.innerText = 'X';
-    // console.log(mainBoard)
-    
-    board.positions
+    let check = document.getElementById(pos).innerText
+    if(!check){
+
+      let posx =parseInt(pos.slice(0,1))
+      let posy =parseInt(pos.slice(1,2))
+      mainBoard[posx][posy] = 'X';
+      // console.log(posx+' '+posy)
+      event.target.innerText = 'X';
+      board.positions
       .forEach(el => el.removeEventListener('click', handleTurnTaken));
+    // console.log(mainBoard)
+    }
+    // else {
+    //   humanPlayer.takeTurn();
+    // }
+    
+    
   }
 }
 
