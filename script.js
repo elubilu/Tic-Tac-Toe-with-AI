@@ -1,6 +1,6 @@
 const ticTacToeGame = new TicTacToeGame();
 let mainBoard = [
-  ['O', '', ''],
+  ['', '', ''],
   ['', '', ''],
   ['', '', '']
 ];
@@ -26,10 +26,10 @@ function TicTacToeGame() {
       return;
     }
 
-    if(turn==0) {
-      document.getElementById('00').innerText = 'O';
-    }
-    else if (turn % 2 === 1) {
+    // if(turn==0) {
+    //   document.getElementById('00').innerText = 'O';
+    // }
+     if (turn % 2 === 0) {
       // console.log(turn)
       humanPlayer.takeTurn();
     } else {

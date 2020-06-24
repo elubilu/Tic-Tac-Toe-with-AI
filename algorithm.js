@@ -1,7 +1,7 @@
 
 function bestMove() {
     // AI to make its turn
-    let bestScore = Infinity;
+    let bestScore = -Infinity;
     let moveI=-1,moveJ=-1;
     for (let i = 0; i < 3; i++) {
       for (let j = 0; j < 3; j++) {
@@ -9,13 +9,13 @@ function bestMove() {
         if (mainBoard[i][j] == '') {
           mainBoard[i][j] = ai;
           let score = minimax(mainBoard, 0, false);
-          // console.log('Score: '+score)
-          // console.log(i+' '+j)
+          console.log('Score: '+score)
+          console.log(i+' '+j)
           mainBoard[i][j] = '';
 
-          if (score < bestScore) {
+          if (score > bestScore) {
             bestScore = score;
-            // console.log('Best Score: '+bestScore)
+            console.log('Best Score: '+bestScore)
             moveI = i;
             moveJ = j;
           }
@@ -35,8 +35,8 @@ function bestMove() {
   }
   
   let scores = {
-    X: 10,
-    O: -10,
+    X: -10,
+    O: 10,
     tie: 0
   };
   
