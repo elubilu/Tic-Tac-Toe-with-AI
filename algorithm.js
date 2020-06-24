@@ -9,12 +9,13 @@ function bestMove() {
         if (mainBoard[i][j] == '') {
           mainBoard[i][j] = ai;
           let score = minimax(mainBoard, 0, false);
-          // console.log(score)
+          // console.log('Score: '+score)
           // console.log(i+' '+j)
           mainBoard[i][j] = '';
+
           if (score < bestScore) {
             bestScore = score;
-            console.log('Best Score: '+bestScore)
+            // console.log('Best Score: '+bestScore)
             moveI = i;
             moveJ = j;
           }

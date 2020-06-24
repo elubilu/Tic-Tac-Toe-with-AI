@@ -1,6 +1,6 @@
 const ticTacToeGame = new TicTacToeGame();
 let mainBoard = [
-  ['', '', ''],
+  ['O', '', ''],
   ['', '', ''],
   ['', '', '']
 ];
@@ -26,7 +26,11 @@ function TicTacToeGame() {
       return;
     }
 
-    if (turn % 2 === 0) {
+    if(turn==0) {
+      document.getElementById('00').innerText = 'O';
+    }
+    else if (turn % 2 === 1) {
+      // console.log(turn)
       humanPlayer.takeTurn();
     } else {
       computerPlayer.takeTurn();
@@ -38,7 +42,7 @@ function TicTacToeGame() {
 
 function Board() {
   this.positions = Array.from(document.querySelectorAll('.col'));
-console.log(this.positions)
+// console.log(this.positions)
   this.checkForWinner = function() {
     let winner = false;
 
@@ -75,7 +79,7 @@ console.log(this.positions)
 function ComputerPlayer(board) {
   this.takeTurn = function() {
   // console.log(board.positions);
-    let availablePositions = board.positions.filter((p) => p.innerText === '');
+    // let availablePositions = board.positions.filter((p) => p.innerText === '');
     
    
     // const move = Math.floor(Math.random() * (availablePositions.length - 0));
@@ -99,9 +103,9 @@ function HumanPlayer(board) {
     let posx =parseInt(pos.slice(0,1))
     let posy =parseInt(pos.slice(1,2))
     mainBoard[posx][posy] = 'X';
-    console.log(posx+' '+posy)
+    // console.log(posx+' '+posy)
     event.target.innerText = 'X';
-    console.log(mainBoard)
+    // console.log(mainBoard)
     
     board.positions
       .forEach(el => el.removeEventListener('click', handleTurnTaken));
